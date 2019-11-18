@@ -98,25 +98,28 @@
 		// Make sure to update the volume element.
 		// Update the console log with the new volume as well.
 	}
-	function gray() { 
-		console.log("In grayscale");
-		vid.style.filter = 'grayscale(1)';
-		// Utilize the existing grayscale class.
-	}
-	function color() {
-		console.log("In color");
-		vid.style.filter = 'grayscale(0)';
-		// Remove the existing grayscale class.
-	}
+	function gray() {
+		console.log("In grayscale")
+		vid.classList.add('grayscale');
+// Utilize the existing grayscale class.
 
-	// Not sure if we can test for this???
+}
+	function color() {
+		console.log("In color")
+		vid.classList.remove('grayscale');
+// Remove the existing grayscale class.
+}
+// Not sure if we can test for this???
 	function random(){
-		console.log("Setting the Property");
-		var rand = Math.random()*100;
-		vid.style.setProperty('filter',"grayscale(" + rand + "%)");
-		vid.style.setProperty("transform", "skewX(" + rand + "degree)");
-		console.log("Grayscale and SkewX are " + rand)
-	}
+		var x = Math.random()
+		var grayV = x * 100;
+		var transV = x * 360;
+		vid.style.setProperty("filter", "grayscale("+grayV +'%)');
+		vid.style.setProperty("transform", "skewX(" + transV + 'deg)');
+		console.log('Grayscale and transX set to:' + x)
+// Use setProperty to change the grayscale filder and transform properties of the video.
+// Log what the new values are to the console.
+}
 	</script> 
 
 </main>
