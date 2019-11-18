@@ -17,22 +17,15 @@
 		button{
 			margin-bottom: 5px;
 		}
-		button.play{
-			background: url(images/playpic.png);
-			background-size: 80%;
-		}
-		button.pause{
-			background: url(images/pausepic.jpg);
-			background-size: 50%;
-		}
+	
 		/*You can not change anything in the style tag other than to add images for the buttons. */
 </style>
 </head>
 <body> 
 <main>
 	<h1>JavaScript Video Controls</h1>
-	<button onclick="playVid()" type="button" class = "play">Play Video</button>
-	<button onclick="pauseVid()" type="button" class = "pause">Pause Video</button><br>
+	<button onclick="playVid()" type="button" class = "play">Play Video<img src = "images/playpic.png"></button>
+	<button onclick="pauseVid()" type="button" class = "pause">Pause Video<img src = "images/pausepic.jpg"></button><br>
 	<button onclick="slowSpeed()" type="button">Slow Down</button>
 	<button onclick="increaseSpeed()" type="button">Speed Up</button><br>
 
@@ -64,7 +57,8 @@
 		console.log("Play Video");
 		vid.play();
 		document.getElementById('volume').innerHTML = volumeSlider.value + '%';
-		vid.playbackrate = 1;
+	/*document.getElementById('volume').innerHTML = volumeSlider.value + '%'; */
+
 	} 
 
 	function pauseVid() { 
@@ -73,13 +67,13 @@
 
 	} 
 	function slowSpeed() {
-		vid.playbackrate = vid.playbackrate/2;
+		vid.playbackRate *= .5;
 		console.log("Speed is " + vid.playbackrate);
 		// Slow the vido speed by half and log the new rate to the console. 
 	} 
 
 	function increaseSpeed() {
-		vid.playbackrate = vid.playbackrate*2;
+		vid.playbackRate *= 2;
 		console.log("Speed is " + vid.playbackrate);
 		// Double the video speen and log the new rate to the console. 
 	} 
@@ -96,6 +90,7 @@
 		}
 	}
 	volumeSlider.oninput = function() {
+		document.querySelector("#volume").innerHTML = volumeSlider.value + "%";
 		vid.volume = this.value/100;
 		console.log("Volume is " + this.value);
 		// Change the volume (0 is off, 100 is full volume, everything else is proportionally in between)
@@ -116,7 +111,7 @@
 
 	// Not sure if we can test for this???
 	function random(){
-		console.log("Setting the Property")
+		console.log("Setting the Property");
 		var rand = Math.random()*100;
 		vid.style.setProperty('filter',"grayscale(" + rand + "%)");
 		vid.style.setProperty("transform", "skewX(" + rand + "degree)");
